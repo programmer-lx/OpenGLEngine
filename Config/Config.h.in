@@ -1,0 +1,5 @@
+#pragma once
+
+#if FLX_DEBUG_BUILD
+    #define FLX_DEBUG_DATA_PATH "${CMAKE_SOURCE_DIR}"
+#endif

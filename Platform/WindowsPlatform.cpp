@@ -1,0 +1,51 @@
+#include "WindowsPlatform.h"
+
+#include "Misc/Debug.h"
+
+#include <Windows.h>
+
+WindowsPlatform::~WindowsPlatform()
+{
+    // reset to default timer
+    timeEndPeriod(1);
+
+    Debug::print("WindowsPlatform destruct");
+}
+
+WindowsPlatform& WindowsPlatform::instance()
+{
+    static WindowsPlatform p;
+    return p;
+}
+
+void WindowsPlatform::init()
+{
+    // high precision timer
+    TIMECAPS tc;
+    timeGetDevCaps(&tc, sizeof(TIMECAPS));
+    timeBeginPeriod(tc.wPeriodMin);
+
+    Debug::print("WindowsPlatform initialized");
+}
+
+std::string WindowsPlatform::exePath() const
+{
+    char path[4097]{};
+    std::memset(path, '\0', 4097 * sizeof(char));
+    GetModuleFileNameA(nullptr, path, 4096);
+
+    std::string result = path;
+    int len = result.size();
+    for (int i = 0; i < len; ++i)
+    {
+        if (result[i] == '\\')
+            result[i] = '/';
+    }
+    return result;
+}
+
+std::string WindowsPlatform::exeDir() const
+{
+    std::string path = exePath();
+    return path.substr(0, path.find_last_of('/'));
+}
