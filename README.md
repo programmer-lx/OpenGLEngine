@@ -1,4 +1,4 @@
-# 基于OpenGL的大型场景渲染器
+# 基于OpenGL的场景渲染器
 
 ## 概述
 
@@ -26,7 +26,7 @@
 
 - 多渲染通道(Multi-pass Rendering)
 
-演示视频，请点击B站链接：[视频链接]()
+演示视频，请点击B站链接：[视频链接](【图形学作品——OpenGL场景渲染】 https://www.bilibili.com/video/BV1mEN1zvETr/?share_source=copy_web&vd_source=dc9fa2b045c2ba1ee124d1c1692e6814)
 
 以下是调试信息，显示了物体数量，以及场景展示截图
 
