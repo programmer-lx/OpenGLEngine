@@ -7,10 +7,10 @@
 std::shared_ptr<PostEffect> PostEffect::create()
 {
     std::shared_ptr<PostEffect> ptr(new PostEffect);
-    ptr->m_ColorCorrectionShader = Shader::create(Application::shadersPath() + "/FlxShader/PostProcessing/ColorCorrection");
-    ptr->m_BlurShader = Shader::create(Application::shadersPath() + "/FlxShader/PostProcessing/BloomBlur");
-    ptr->m_BrightExtractionShader = Shader::create(Application::shadersPath() + "/FlxShader/PostProcessing/BrightExtraction");
-    ptr->m_ColorAdditionShader = Shader::create(Application::shadersPath() + "/FlxShader/PostProcessing/ColorAddition");
+    ptr->m_ColorCorrectionShader = Shader::create(Application::shadersPath() / "FlxShader/PostProcessing/ColorCorrection");
+    ptr->m_BlurShader = Shader::create(Application::shadersPath() / "FlxShader/PostProcessing/BloomBlur");
+    ptr->m_BrightExtractionShader = Shader::create(Application::shadersPath() / "FlxShader/PostProcessing/BrightExtraction");
+    ptr->m_ColorAdditionShader = Shader::create(Application::shadersPath() / "FlxShader/PostProcessing/ColorAddition");
 
     ptr->m_PingPongRT[0] = RenderTarget::create(1920, 1080);
     ptr->m_PingPongRT[1] = RenderTarget::create(1920, 1080);

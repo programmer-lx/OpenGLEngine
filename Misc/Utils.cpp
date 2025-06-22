@@ -7,7 +7,7 @@
 
 #include <regex>
 
-std::vector<Transform> Utils::decodeSceneDataFile(const std::string& filePath)
+std::vector<Transform> Utils::decodeSceneDataFile(const std::filesystem::path& filePath)
 {
     File file(filePath, std::ios::in);
     if (!file.isValid())

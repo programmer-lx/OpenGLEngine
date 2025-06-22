@@ -2,9 +2,12 @@
 
 #include "Mesh.h"
 #include "Misc/Debug.h"
+#include "Misc/File.h"
 
 #include <assimp/postprocess.h>
 #include <assimp/Importer.hpp>
+
+#include <fstream>
 
 void Model::loadRootNode(const aiScene* scene, aiNode* root, VertexDataType type)
 {
@@ -164,19 +167,31 @@ const std::vector<std::shared_ptr<Mesh>>& Model::meshes() const
     return m_Meshes;
 }
 
-std::shared_ptr<Model> Model::create(const std::string& filePath, VertexDataType type)
+std::shared_ptr<Model> Model::create(const std::filesystem::path& filePath, VertexDataType type)
 {
     std::shared_ptr<Model> ptr(new Model);
     ptr->reset(filePath, type);
     return ptr;
 }
 
-void Model::reset(const std::string& filePath, VertexDataType type)
+void Model::reset(const std::filesystem::path& filePath, VertexDataType type)
 {
     m_FacesCount = 0;
 
+    // load from memory
+    File file(filePath, std::ios::in | std::ios::binary);
+    auto buffer = file.getBytes();
+    if (buffer.empty())
+    {
+        Debug::print("Failed to load model: `{}`", filePath.string());
+        return;
+    }
+
     Assimp::Importer importer;
-    const aiScene* scene = importer.ReadFile(filePath.c_str(), aiProcess_Triangulate | aiProcess_FlipUVs | aiProcess_GenNormals | aiProcess_CalcTangentSpace);
+    // const aiScene* scene = importer.ReadFile(filePath.string().c_str(), aiProcess_Triangulate | aiProcess_FlipUVs | aiProcess_GenNormals | aiProcess_CalcTangentSpace);
+    const aiScene* scene = importer.ReadFileFromMemory(buffer.data(), buffer.size(),
+        aiProcess_Triangulate | aiProcess_FlipUVs | aiProcess_GenNormals | aiProcess_CalcTangentSpace,
+        filePath.extension().string().c_str());
 
     // check
     if (!scene || !scene->mRootNode || scene->mFlags & AI_SCENE_FLAGS_INCOMPLETE)

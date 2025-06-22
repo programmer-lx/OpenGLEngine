@@ -1,6 +1,7 @@
 #pragma once
 
 #include <string>
+#include <filesystem>
 
 class WindowsPlatform final
 {
@@ -14,6 +15,6 @@ public:
     static WindowsPlatform& instance();
 
     void init();
-    std::string exePath() const;
-    std::string exeDir() const;
+    std::filesystem::path exePath() const;
+    std::filesystem::path exeDir() const;
 };

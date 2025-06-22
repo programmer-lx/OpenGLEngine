@@ -2,14 +2,17 @@
 
 #include <fstream>
 #include <string>
+#include <filesystem>
+#include <vector>
 
 class File
 {
 private:
-    std::fstream m_Stream;
+    std::ifstream m_Stream;
+    std::streamsize m_Size;
 
 public:
-    explicit File(const std::string& path,
+    explicit File(const std::filesystem::path& path,
                   int stdOpenMode = std::ios_base::in | std::ios_base::out,
                   int stdOpenRule = std::ios_base::_Default_open_prot);
 
@@ -18,5 +21,6 @@ public:
         return m_Stream.is_open();
     }
 
-    std::string getString() const;
+    std::string getString();
+    std::vector<char> getBytes();
 };

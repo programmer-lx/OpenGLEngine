@@ -17,8 +17,8 @@ bool ShaderUtil::compileShader(const char* filePath, GLenum shaderType, std::uin
         // cache header and function code
         if (s_HeaderStr.empty() || s_FunctionStr.empty())
         {
-            File header(Application::shadersPath() + "/Includes/Header.glsl", std::ios::in);
-            File functions(Application::shadersPath() + "/Includes/Functions.glsl", std::ios::in);
+            File header(Application::shadersPath() / "Includes/Header.glsl", std::ios::in);
+            File functions(Application::shadersPath() / "Includes/Functions.glsl", std::ios::in);
 
             if (!header.isValid() || !functions.isValid())
                 return false;

@@ -8,6 +8,7 @@
 #include <array>
 #include <string>
 #include <cinttypes>
+#include <filesystem>
 
 class TextureCube : public Texture
 {
@@ -25,5 +26,5 @@ public:
      * @param verticalFlip vertical flip
      * @return load successfully: true, else: false
      */
-    bool loadFromFile(const std::array<std::string, 6>& filePath, bool verticalFlip = true);
+    bool loadFromFile(const std::array<std::filesystem::path, 6>& filePath, bool verticalFlip = true);
 };

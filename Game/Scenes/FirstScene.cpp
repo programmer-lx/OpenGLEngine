@@ -50,77 +50,77 @@ void FirstScene::awake()
     Scene::awake();
 
     // models
-    auto mountain1 = Model::create(Application::resourcesPath() + "/Models/LowPoly/Forest/Mountain1.obj", VertexDataType::Full);
-    auto mountain2 = Model::create(Application::resourcesPath() + "/Models/LowPoly/Forest/Mountain2.obj", VertexDataType::Full);
+    auto mountain1 = Model::create(Application::resourcesPath() / "Models/LowPoly/Forest/Mountain1.obj", VertexDataType::Full);
+    auto mountain2 = Model::create(Application::resourcesPath() / "Models/LowPoly/Forest/Mountain2.obj", VertexDataType::Full);
 
-    auto meadowFlat1 = Model::create(Application::resourcesPath() + "/Models/LowPoly/Forest/Meadow_Flat_1.obj", VertexDataType::Full);
-    auto meadowFlat2 = Model::create(Application::resourcesPath() + "/Models/LowPoly/Forest/Meadow_Flat_2.obj", VertexDataType::Full);
-    auto meadowBumpy1 = Model::create(Application::resourcesPath() + "/Models/LowPoly/Forest/Meadow_Bumpy_1.obj", VertexDataType::Full);
+    auto meadowFlat1 = Model::create(Application::resourcesPath() / "Models/LowPoly/Forest/Meadow_Flat_1.obj", VertexDataType::Full);
+    auto meadowFlat2 = Model::create(Application::resourcesPath() / "Models/LowPoly/Forest/Meadow_Flat_2.obj", VertexDataType::Full);
+    auto meadowBumpy1 = Model::create(Application::resourcesPath() / "Models/LowPoly/Forest/Meadow_Bumpy_1.obj", VertexDataType::Full);
 
-    auto rock4 = Model::create(Application::resourcesPath() + "/Models/LowPoly/Forest/Rock4.obj", VertexDataType::Full);
+    auto rock4 = Model::create(Application::resourcesPath() / "Models/LowPoly/Forest/Rock4.obj", VertexDataType::Full);
 
-    auto tree1 = Model::create(Application::resourcesPath() + "/Models/LowPoly/Forest/Tree1.obj", VertexDataType::Full);
-    auto tree2 = Model::create(Application::resourcesPath() + "/Models/LowPoly/Forest/Tree2.obj", VertexDataType::Full);
-    auto tree3 = Model::create(Application::resourcesPath() + "/Models/LowPoly/Forest/Tree3.obj", VertexDataType::Full);
-    auto tree4 = Model::create(Application::resourcesPath() + "/Models/LowPoly/Forest/Tree4.obj", VertexDataType::Full);
+    auto tree1 = Model::create(Application::resourcesPath() / "Models/LowPoly/Forest/Tree1.obj", VertexDataType::Full);
+    auto tree2 = Model::create(Application::resourcesPath() / "Models/LowPoly/Forest/Tree2.obj", VertexDataType::Full);
+    auto tree3 = Model::create(Application::resourcesPath() / "Models/LowPoly/Forest/Tree3.obj", VertexDataType::Full);
+    auto tree4 = Model::create(Application::resourcesPath() / "Models/LowPoly/Forest/Tree4.obj", VertexDataType::Full);
 
-    auto lamp1 = Model::create(Application::resourcesPath() + "/Models/LowPoly/lamps-pack/Lamp1.obj", VertexDataType::Full);
-    auto lamp2 = Model::create(Application::resourcesPath() + "/Models/LowPoly/lamps-pack/Lamp2.obj", VertexDataType::Full);
-    auto lamp3 = Model::create(Application::resourcesPath() + "/Models/LowPoly/lamps-pack/Lamp3.obj", VertexDataType::Full);
-    auto lamp4 = Model::create(Application::resourcesPath() + "/Models/LowPoly/lamps-pack/Lamp4.obj", VertexDataType::Full);
-    auto lamp5 = Model::create(Application::resourcesPath() + "/Models/LowPoly/lamps-pack/Lamp5.obj", VertexDataType::Full);
+    auto lamp1 = Model::create(Application::resourcesPath() / "Models/LowPoly/lamps-pack/Lamp1.obj", VertexDataType::Full);
+    auto lamp2 = Model::create(Application::resourcesPath() / "Models/LowPoly/lamps-pack/Lamp2.obj", VertexDataType::Full);
+    auto lamp3 = Model::create(Application::resourcesPath() / "Models/LowPoly/lamps-pack/Lamp3.obj", VertexDataType::Full);
+    auto lamp4 = Model::create(Application::resourcesPath() / "Models/LowPoly/lamps-pack/Lamp4.obj", VertexDataType::Full);
+    auto lamp5 = Model::create(Application::resourcesPath() / "Models/LowPoly/lamps-pack/Lamp5.obj", VertexDataType::Full);
 
     // meshes
     auto ocean = Utils::genPlane(2000, 2000, 150, 150);
-    auto testCube = Mesh::create(Application::resourcesPath() + "/Models/Box.txtm", MeshFileType::TxtMesh);
+    auto testCube = Mesh::create(Application::resourcesPath() / "Models/Box.txtm", MeshFileType::TxtMesh);
 
     // shadow shader
-    auto cubeShadowCasterShader = Shader::create(Application::shadersPath() + "/FlxShader/Shadow/BatchOminidirectionalShadowMap");
+    auto cubeShadowCasterShader = Shader::create(Application::shadersPath() / "FlxShader/Shadow/BatchOminidirectionalShadowMap");
 
     // deferred shader
-    auto gGeometryShader = Shader::create(Application::shadersPath() + "/FlxShader/Deferred/GBuffer");
-    auto batchGeometryShader = Shader::create(Application::shadersPath() + "/FlxShader/Deferred/BatchGBuffer");
-    auto gLightingShader = Shader::create(Application::shadersPath() + "/FlxShader/Deferred/LightingPass");
-    auto ssaoShader = Shader::create(Application::shadersPath() + "/FlxShader/Deferred/SSAO");
-    auto ssaoBlurShader = Shader::create(Application::shadersPath() + "/FlxShader/Deferred/SSAOBlur");
+    auto gGeometryShader = Shader::create(Application::shadersPath() / "FlxShader/Deferred/GBuffer");
+    auto batchGeometryShader = Shader::create(Application::shadersPath() / "FlxShader/Deferred/BatchGBuffer");
+    auto gLightingShader = Shader::create(Application::shadersPath() / "FlxShader/Deferred/LightingPass");
+    auto ssaoShader = Shader::create(Application::shadersPath() / "FlxShader/Deferred/SSAO");
+    auto ssaoBlurShader = Shader::create(Application::shadersPath() / "FlxShader/Deferred/SSAOBlur");
 
     // forward shader
-    auto fwdOceanShader = Shader::create(Application::shadersPath() + "/FlxShader/Forward/Ocean");
+    auto fwdOceanShader = Shader::create(Application::shadersPath() / "FlxShader/Forward/Ocean");
 
 
     // builtin textures
     auto defaultNormalTex = Texture2D::create(GL_RGB);
-    defaultNormalTex->loadFromFile(Application::resourcesPath() + "/Textures/Builtin/DefaultNormal.png");
+    defaultNormalTex->loadFromFile(Application::resourcesPath() / "Textures/Builtin/DefaultNormal.png");
 
     auto whiteTex = Texture2D::create(GL_RGB);
-    whiteTex->loadFromFile(Application::resourcesPath() + "/Textures/Builtin/White.png");
+    whiteTex->loadFromFile(Application::resourcesPath() / "Textures/Builtin/White.png");
 
     auto greyTex = Texture2D::create(GL_RGB);
-    greyTex->loadFromFile(Application::resourcesPath() + "/Textures/Builtin/64Grey.png");
+    greyTex->loadFromFile(Application::resourcesPath() / "Textures/Builtin/64Grey.png");
 
     auto blackTex = Texture2D::create(GL_RGB);
-    blackTex->loadFromFile(Application::resourcesPath() + "/Textures/Builtin/Black.png");
+    blackTex->loadFromFile(Application::resourcesPath() / "Textures/Builtin/Black.png");
 
     // low-poly texture
     auto lowPolyTex = Texture2D::create(GL_RGB);
-    lowPolyTex->loadFromFile(Application::resourcesPath() + "/Models/LowPoly/Forest/textures/PP_Color_Palette.png", false);
+    lowPolyTex->loadFromFile(Application::resourcesPath() / "Models/LowPoly/Forest/textures/PP_Color_Palette.png", false);
 
     // lamp texture
     auto lampTex = Texture2D::create(GL_RGB);
-    lampTex->loadFromFile(Application::resourcesPath() + "/Models/LowPoly/lamps-pack/textures/Lamps_low_Metal_BaseColor_2.png", false);
+    lampTex->loadFromFile(Application::resourcesPath() / "Models/LowPoly/lamps-pack/textures/Lamps_low_Metal_BaseColor_2.png", false);
 
     auto lampEmissionTex = Texture2D::create(GL_RGB);
-    lampEmissionTex->loadFromFile(Application::resourcesPath() + "/Models/LowPoly/lamps-pack/textures/Emission_Final_2048_2.png", false);
+    lampEmissionTex->loadFromFile(Application::resourcesPath() / "Models/LowPoly/lamps-pack/textures/Emission_Final_2048_2.png", false);
 
     // skybox texture
     auto skyboxTex = TextureCube::create(GL_RGB);
     skyboxTex->loadFromFile({
-        Application::resourcesPath() + "/Textures/Cube/ulukai/corona_rt.png",
-        Application::resourcesPath() + "/Textures/Cube/ulukai/corona_lf.png",
-        Application::resourcesPath() + "/Textures/Cube/ulukai/corona_up.png",
-        Application::resourcesPath() + "/Textures/Cube/ulukai/corona_dn.png",
-        Application::resourcesPath() + "/Textures/Cube/ulukai/corona_ft.png",
-        Application::resourcesPath() + "/Textures/Cube/ulukai/corona_bk.png"
+        Application::resourcesPath() / "Textures/Cube/ulukai/corona_rt.png",
+        Application::resourcesPath() / "Textures/Cube/ulukai/corona_lf.png",
+        Application::resourcesPath() / "Textures/Cube/ulukai/corona_up.png",
+        Application::resourcesPath() / "Textures/Cube/ulukai/corona_dn.png",
+        Application::resourcesPath() / "Textures/Cube/ulukai/corona_ft.png",
+        Application::resourcesPath() / "Textures/Cube/ulukai/corona_bk.png"
     }, true);
 
     // pass
@@ -189,95 +189,95 @@ void FirstScene::awake()
     // mountains
     auto mountain1_Objs = GameObject::create();
     mountain1_Objs->setName("mountain 1 objs");
-    auto mountain1Transforms = Utils::decodeSceneDataFile(Application::resourcesPath() + "/SceneData/Mountain1.transvector");
+    auto mountain1Transforms = Utils::decodeSceneDataFile(Application::resourcesPath() / "SceneData/Mountain1.transvector");
     mountain1_Objs->addComponent<BatchModelRenderer>(mountain1Transforms, mountain1, batchLowPolyMaterial);
     gameObjectCount += mountain1Transforms.size();
 
     mountain2_Objs = GameObject::create();
     mountain2_Objs->setName("mountain 2 objs");
-    auto mountain2Transforms = Utils::decodeSceneDataFile(Application::resourcesPath() + "/SceneData/Mountain2.transvector");
+    auto mountain2Transforms = Utils::decodeSceneDataFile(Application::resourcesPath() / "SceneData/Mountain2.transvector");
     mountain2_Objs->addComponent<BatchModelRenderer>(mountain2Transforms, mountain2, batchLowPolyMaterial);
     gameObjectCount += mountain2Transforms.size();
 
     // lands
     auto meadowFlat1_Objs = GameObject::create();
     meadowFlat1_Objs->setName("meadow flat 1 objs");
-    auto meadowFlat1Transforms = Utils::decodeSceneDataFile(Application::resourcesPath() + "/SceneData/Meadow_Flat_1.transvector");
+    auto meadowFlat1Transforms = Utils::decodeSceneDataFile(Application::resourcesPath() / "SceneData/Meadow_Flat_1.transvector");
     meadowFlat1_Objs->addComponent<BatchModelRenderer>(meadowFlat1Transforms, meadowFlat1, batchLowPolyMaterial);
     gameObjectCount += meadowFlat1Transforms.size();
 
     auto meadowFlat2_Objs = GameObject::create();
     meadowFlat2_Objs->setName("meadow flat 2 objs");
-    auto meadowFlat2Transforms = Utils::decodeSceneDataFile(Application::resourcesPath() + "/SceneData/Meadow_Flat_2.transvector");
+    auto meadowFlat2Transforms = Utils::decodeSceneDataFile(Application::resourcesPath() / "SceneData/Meadow_Flat_2.transvector");
     meadowFlat2_Objs->addComponent<BatchModelRenderer>(meadowFlat2Transforms, meadowFlat2, batchLowPolyMaterial);
     gameObjectCount += meadowFlat2Transforms.size();
 
     auto meadowBumpy1_Objs = GameObject::create();
     meadowBumpy1_Objs->setName("meadow bumpy 1 objs");
-    auto meadowBumpy1Transforms = Utils::decodeSceneDataFile(Application::resourcesPath() + "/SceneData/Meadow_Bumpy_1.transvector");
+    auto meadowBumpy1Transforms = Utils::decodeSceneDataFile(Application::resourcesPath() / "SceneData/Meadow_Bumpy_1.transvector");
     meadowBumpy1_Objs->addComponent<BatchModelRenderer>(meadowBumpy1Transforms, meadowBumpy1, batchLowPolyMaterial);
     gameObjectCount += meadowBumpy1Transforms.size();
 
     // trees
     tree1_Objs = GameObject::create();
     tree1_Objs->setName("tree 1 objs");
-    auto tree1Transforms = Utils::decodeSceneDataFile(Application::resourcesPath() + "/SceneData/Tree1.transvector");
+    auto tree1Transforms = Utils::decodeSceneDataFile(Application::resourcesPath() / "SceneData/Tree1.transvector");
     tree1_Objs->addComponent<BatchModelRenderer>(tree1Transforms, tree1, batchLowPolyMaterial);
     gameObjectCount += tree1Transforms.size();
 
     auto tree2_Objs = GameObject::create();
     tree2_Objs->setName("tree 2 objs");
-    auto tree2Transforms = Utils::decodeSceneDataFile(Application::resourcesPath() + "/SceneData/Tree2.transvector");
+    auto tree2Transforms = Utils::decodeSceneDataFile(Application::resourcesPath() / "SceneData/Tree2.transvector");
     tree2_Objs->addComponent<BatchModelRenderer>(tree2Transforms, tree2, batchLowPolyMaterial);
     gameObjectCount += tree2Transforms.size();
 
     auto tree3_Objs = GameObject::create();
     tree3_Objs->setName("tree 3 objs");
-    auto tree3Transforms = Utils::decodeSceneDataFile(Application::resourcesPath() + "/SceneData/Tree3.transvector");
+    auto tree3Transforms = Utils::decodeSceneDataFile(Application::resourcesPath() / "SceneData/Tree3.transvector");
     tree3_Objs->addComponent<BatchModelRenderer>(tree3Transforms, tree3, batchLowPolyMaterial);
     gameObjectCount += tree3Transforms.size();
 
     auto tree4_Objs = GameObject::create();
     tree4_Objs->setName("tree 4 objs");
-    auto tree4Transforms = Utils::decodeSceneDataFile(Application::resourcesPath() + "/SceneData/Tree4.transvector");
+    auto tree4Transforms = Utils::decodeSceneDataFile(Application::resourcesPath() / "SceneData/Tree4.transvector");
     tree4_Objs->addComponent<BatchModelRenderer>(tree4Transforms, tree4, batchLowPolyMaterial);
     gameObjectCount += tree4Transforms.size();
 
     // rocks
     auto rock4_Objs = GameObject::create();
     rock4_Objs->setName("rock 4 objs");
-    auto rock4Transforms = Utils::decodeSceneDataFile(Application::resourcesPath() + "/SceneData/Rock4.transvector");
+    auto rock4Transforms = Utils::decodeSceneDataFile(Application::resourcesPath() / "SceneData/Rock4.transvector");
     rock4_Objs->addComponent<BatchModelRenderer>(rock4Transforms, rock4, batchLowPolyMaterial);
     gameObjectCount += rock4Transforms.size();
 
     // Lamps
     auto lamp1_Objs = GameObject::create();
     lamp1_Objs->setName("lamp 1 objs");
-    auto lamp1Transforms = Utils::decodeSceneDataFile(Application::resourcesPath() + "/SceneData/Lamp1.transvector");
+    auto lamp1Transforms = Utils::decodeSceneDataFile(Application::resourcesPath() / "SceneData/Lamp1.transvector");
     lamp1_Objs->addComponent<BatchModelRenderer>(lamp1Transforms, lamp1, batchLampMaterial);
     gameObjectCount += lamp1Transforms.size();
 
     auto lamp2_Objs = GameObject::create();
     lamp2_Objs->setName("lamp 2 objs");
-    auto lamp2Transforms = Utils::decodeSceneDataFile(Application::resourcesPath() + "/SceneData/Lamp2.transvector");
+    auto lamp2Transforms = Utils::decodeSceneDataFile(Application::resourcesPath() / "SceneData/Lamp2.transvector");
     lamp2_Objs->addComponent<BatchModelRenderer>(lamp2Transforms, lamp2, batchLampMaterial);
     gameObjectCount += lamp2Transforms.size();
 
     auto lamp3_Objs = GameObject::create();
     lamp3_Objs->setName("lamp 3 objs");
-    auto lamp3Transforms = Utils::decodeSceneDataFile(Application::resourcesPath() + "/SceneData/Lamp3.transvector");
+    auto lamp3Transforms = Utils::decodeSceneDataFile(Application::resourcesPath() / "SceneData/Lamp3.transvector");
     lamp3_Objs->addComponent<BatchModelRenderer>(lamp3Transforms, lamp3, batchLampMaterial);
     gameObjectCount += lamp3Transforms.size();
 
     auto lamp4_Objs = GameObject::create();
     lamp4_Objs->setName("lamp 4 objs");
-    auto lamp4Transforms = Utils::decodeSceneDataFile(Application::resourcesPath() + "/SceneData/Lamp4.transvector");
+    auto lamp4Transforms = Utils::decodeSceneDataFile(Application::resourcesPath() / "SceneData/Lamp4.transvector");
     lamp4_Objs->addComponent<BatchModelRenderer>(lamp4Transforms, lamp4, batchLampMaterial);
     gameObjectCount += lamp4Transforms.size();
 
     auto lamp5_Objs = GameObject::create();
     lamp5_Objs->setName("lamp 5 objs");
-    auto lamp5Transforms = Utils::decodeSceneDataFile(Application::resourcesPath() + "/SceneData/Lamp5.transvector");
+    auto lamp5Transforms = Utils::decodeSceneDataFile(Application::resourcesPath() / "SceneData/Lamp5.transvector");
     lamp5_Objs->addComponent<BatchModelRenderer>(lamp5Transforms, lamp5, batchLampMaterial);
     gameObjectCount += lamp5Transforms.size();
 
@@ -304,7 +304,7 @@ void FirstScene::awake()
     lightCount++;
 
     // pointLights
-    auto pointLightTransforms = Utils::decodeSceneDataFile(Application::resourcesPath() + "/SceneData/PointLight_Lamp.transvector");
+    auto pointLightTransforms = Utils::decodeSceneDataFile(Application::resourcesPath() / "SceneData/PointLight_Lamp.transvector");
     int index = 0;
     for (const auto& p : pointLightTransforms)
     {

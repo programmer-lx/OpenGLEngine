@@ -1,6 +1,7 @@
 #include "Texture2D.h"
 
 #include "Misc/Debug.h"
+#include "Misc/File.h"
 
 #include <stb/stb_image.h>
 
@@ -20,11 +21,21 @@ Texture2D::~Texture2D()
     Debug::print("Texture2D destruct");
 }
 
-bool Texture2D::loadFromFile(const std::string& filePath, bool verticalFlip)
+bool Texture2D::loadFromFile(const std::filesystem::path& filePath, bool verticalFlip)
 {
     // open file
+    // load from memory
     stbi_set_flip_vertically_on_load(verticalFlip);
-    std::uint8_t* imgData = stbi_load(filePath.c_str(), &m_Width, &m_Height, &m_Channels, 0);
+
+    File file(filePath, std::ios::in | std::ios::binary);
+    auto buffer = file.getBytes();
+    if (buffer.empty())
+    {
+        m_IsValid = false;
+        return false;
+    }
+    // std::uint8_t* imgData = stbi_load(filePath.string().c_str(), &m_Width, &m_Height, &m_Channels, 0);
+    std::uint8_t* imgData = stbi_load_from_memory(reinterpret_cast<const uint8_t*>(buffer.data()), buffer.size(), &m_Width, &m_Height, &m_Channels, 0);
     if (!imgData)
     {
         m_IsValid = false;

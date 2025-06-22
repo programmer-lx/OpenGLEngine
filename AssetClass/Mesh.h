@@ -10,6 +10,7 @@
 #include <cinttypes>
 #include <memory>
 #include <string>
+#include <filesystem>
 
 enum class MeshFileType
 {
@@ -42,15 +43,15 @@ private:
     std::int32_t m_IndicesCount{};
 
 private:
-    void readTxtM(const std::string& filePath, std::vector<float>* outBuffer, std::vector<std::uint32_t>* outIndices);
+    void readTxtM(const std::filesystem::path& filePath, std::vector<float>* outBuffer, std::vector<std::uint32_t>* outIndices);
 
 private:
     Mesh();
 public:
     ~Mesh();
 
-    static std::shared_ptr<Mesh> create(const std::string& filePath, MeshFileType type);
-    void reset(const std::string& filePath, MeshFileType type);
+    static std::shared_ptr<Mesh> create(const std::filesystem::path& filePath, MeshFileType type);
+    void reset(const std::filesystem::path& filePath, MeshFileType type);
 
     static std::shared_ptr<Mesh> create(const std::vector<VertexData3>& vertexData3, const std::vector<std::uint32_t>& indices);
     void reset(const std::vector<VertexData3>& vertexData3, const std::vector<std::uint32_t>& indices);

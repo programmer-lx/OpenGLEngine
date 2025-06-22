@@ -1,6 +1,7 @@
 #include "TextureCube.h"
 
 #include "Misc/Debug.h"
+#include "Misc/File.h"
 
 #include <stb/stb_image.h>
 
@@ -21,7 +22,7 @@ std::shared_ptr<TextureCube> TextureCube::create(GLint selfFormat, GLint wrapMod
     return ptr;
 }
 
-bool TextureCube::loadFromFile(const std::array<std::string, 6>& filePath, bool verticalFlip)
+bool TextureCube::loadFromFile(const std::array<std::filesystem::path, 6>& filePath, bool verticalFlip)
 {
     // bind
     glBindTexture(GL_TEXTURE_CUBE_MAP, m_TexID);
@@ -30,8 +31,18 @@ bool TextureCube::loadFromFile(const std::array<std::string, 6>& filePath, bool 
     for (int i = 0; i < 6; ++i)
     {
         // open file
+        // read from memory
         stbi_set_flip_vertically_on_load(verticalFlip);
-        std::uint8_t* imgData = stbi_load(filePath[i].c_str(), &m_Width, &m_Height, &m_Channels, 0);
+
+        File file(filePath[i], std::ios::in | std::ios::binary);
+        auto buffer = file.getBytes();
+        if (buffer.empty())
+        {
+            m_IsValid = false;
+            return false;
+        }
+        // std::uint8_t* imgData = stbi_load(filePath[i].string().c_str(), &m_Width, &m_Height, &m_Channels, 0);
+        std::uint8_t* imgData = stbi_load_from_memory(reinterpret_cast<const uint8_t*>(buffer.data()), buffer.size(), &m_Width, &m_Height, &m_Channels, 0);
         if (!imgData)
         {
             m_IsValid = false;

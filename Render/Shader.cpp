@@ -192,34 +192,34 @@ Shader::Shader(const char* dirPath, bool isNativeShader)
     m_ProgramID = program;
 }
 
-std::shared_ptr<Shader> Shader::create(const std::string& vertexPath, const std::string& fragmentPath)
+std::shared_ptr<Shader> Shader::create(const std::filesystem::path& vertexPath, const std::filesystem::path& fragmentPath)
 {
-    return std::shared_ptr<Shader>(new Shader(vertexPath.c_str(), fragmentPath.c_str(), false));
+    return std::shared_ptr<Shader>(new Shader(vertexPath.string().c_str(), fragmentPath.string().c_str(), false));
 }
 
-std::shared_ptr<Shader> Shader::create(const std::string& vertexPath, const std::string& fragmentPath, const std::string& geometryPath)
+std::shared_ptr<Shader> Shader::create(const std::filesystem::path& vertexPath, const std::filesystem::path& fragmentPath, const std::filesystem::path& geometryPath)
 {
-    return std::shared_ptr<Shader>(new Shader(vertexPath.c_str(), fragmentPath.c_str(), geometryPath.c_str(), false));
+    return std::shared_ptr<Shader>(new Shader(vertexPath.string().c_str(), fragmentPath.string().c_str(), geometryPath.string().c_str(), false));
 }
 
-std::shared_ptr<Shader> Shader::create(const std::string& dirPath)
+std::shared_ptr<Shader> Shader::create(const std::filesystem::path& dirPath)
 {
-    return std::shared_ptr<Shader>(new Shader(dirPath.c_str(), false));
+    return std::shared_ptr<Shader>(new Shader(dirPath.string().c_str(), false));
 }
 
-std::shared_ptr<Shader> Shader::createNative(const std::string& vertexPath, const std::string& fragmentPath)
+std::shared_ptr<Shader> Shader::createNative(const std::filesystem::path& vertexPath, const std::filesystem::path& fragmentPath)
 {
-    return std::shared_ptr<Shader>(new Shader(vertexPath.c_str(), fragmentPath.c_str(), true));
+    return std::shared_ptr<Shader>(new Shader(vertexPath.string().c_str(), fragmentPath.string().c_str(), true));
 }
 
-std::shared_ptr<Shader> Shader::createNative(const std::string& vertexPath, const std::string& fragmentPath, const std::string& geometryPath)
+std::shared_ptr<Shader> Shader::createNative(const std::filesystem::path& vertexPath, const std::filesystem::path& fragmentPath, const std::filesystem::path& geometryPath)
 {
-    return std::shared_ptr<Shader>(new Shader(vertexPath.c_str(), fragmentPath.c_str(), geometryPath.c_str(), true));
+    return std::shared_ptr<Shader>(new Shader(vertexPath.string().c_str(), fragmentPath.string().c_str(), geometryPath.string().c_str(), true));
 }
 
-std::shared_ptr<Shader> Shader::createNative(const std::string& dirPath)
+std::shared_ptr<Shader> Shader::createNative(const std::filesystem::path& dirPath)
 {
-    return std::shared_ptr<Shader>(new Shader(dirPath.c_str(), true));
+    return std::shared_ptr<Shader>(new Shader(dirPath.string().c_str(), true));
 }
 
 Shader::~Shader()

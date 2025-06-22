@@ -5,7 +5,7 @@
 #include <memory>
 #include <vector>
 #include <string>
-
+#include <filesystem>
 
 enum class VertexDataType
 {
@@ -33,9 +33,9 @@ public:
     const std::vector<std::shared_ptr<Mesh>>& meshes() const;
 
 public:
-    static std::shared_ptr<Model> create(const std::string& filePath, VertexDataType type);
+    static std::shared_ptr<Model> create(const std::filesystem::path& filePath, VertexDataType type);
 
-    void reset(const std::string& filePath, VertexDataType type);
+    void reset(const std::filesystem::path& filePath, VertexDataType type);
 
     void draw();
 };

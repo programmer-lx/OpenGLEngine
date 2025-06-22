@@ -28,7 +28,7 @@ void WindowsPlatform::init()
     Debug::print("WindowsPlatform initialized");
 }
 
-std::string WindowsPlatform::exePath() const
+std::filesystem::path WindowsPlatform::exePath() const
 {
     char path[4097]{};
     std::memset(path, '\0', 4097 * sizeof(char));
@@ -44,8 +44,8 @@ std::string WindowsPlatform::exePath() const
     return result;
 }
 
-std::string WindowsPlatform::exeDir() const
+std::filesystem::path WindowsPlatform::exeDir() const
 {
-    std::string path = exePath();
-    return path.substr(0, path.find_last_of('/'));
+    auto path = exePath();
+    return std::filesystem::absolute(path.parent_path());
 }

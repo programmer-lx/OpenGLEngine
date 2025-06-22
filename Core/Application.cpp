@@ -6,14 +6,14 @@
 #include <GLFW/glfw3.h>
 
 GLFWwindow* Application::s_Window = nullptr;
-std::string Application::s_DataPath;
+std::filesystem::path Application::s_DataPath;
 
 void Application::init(GLFWwindow* window)
 {
     s_Window = window;
 }
 
-const std::string& Application::dataPath()
+const std::filesystem::path& Application::dataPath()
 {
     if (s_DataPath.empty())
     {
@@ -26,14 +26,14 @@ const std::string& Application::dataPath()
     return s_DataPath;
 }
 
-std::string Application::shadersPath()
+std::filesystem::path Application::shadersPath()
 {
-    return dataPath() + "/Shaders";
+    return dataPath() / "Shaders";
 }
 
-std::string Application::resourcesPath()
+std::filesystem::path Application::resourcesPath()
 {
-    return dataPath() + "/Resources";
+    return dataPath() / "Resources";
 }
 
 void Application::quit()

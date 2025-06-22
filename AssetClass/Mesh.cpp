@@ -4,7 +4,7 @@
 #include "Misc/File.h"
 #include "Misc/StringUtil.h"
 
-void Mesh::readTxtM(const std::string& filePath, std::vector<float>* outBuffer, std::vector<std::uint32_t>* outIndices)
+void Mesh::readTxtM(const std::filesystem::path& filePath, std::vector<float>* outBuffer, std::vector<std::uint32_t>* outIndices)
 {
     File file(filePath, std::ios::in);
     std::string str = file.getString();
@@ -38,7 +38,7 @@ Mesh::Mesh()
     m_EBO = std::make_unique<BufferObject>(GL_ELEMENT_ARRAY_BUFFER);
 }
 
-std::shared_ptr<Mesh> Mesh::create(const std::string& filePath, MeshFileType type)
+std::shared_ptr<Mesh> Mesh::create(const std::filesystem::path& filePath, MeshFileType type)
 {
     auto mesh = std::shared_ptr<Mesh>(new Mesh);
     mesh->reset(filePath, type);
@@ -86,7 +86,7 @@ Mesh::~Mesh()
     Debug::print("Mesh destruct");
 }
 
-void Mesh::reset(const std::string& filePath, MeshFileType type)
+void Mesh::reset(const std::filesystem::path& filePath, MeshFileType type)
 {
     std::vector<float> buffer;
     std::vector<std::uint32_t> indices;

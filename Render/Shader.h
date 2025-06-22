@@ -9,6 +9,7 @@
 #include <memory>
 #include <set>
 #include <map>
+#include <filesystem>
 
 class Texture;
 class RenderTarget;
@@ -37,13 +38,13 @@ private:
     Shader(const char* dirPath, bool isNativeShader);
 public:
     // ============================================== constructor ==============================================
-    static std::shared_ptr<Shader> create(const std::string& vertexPath, const std::string& fragmentPath);
-    static std::shared_ptr<Shader> create(const std::string& vertexPath, const std::string& fragmentPath, const std::string& geometryPath);
-    static std::shared_ptr<Shader> create(const std::string& dirPath);
+    static std::shared_ptr<Shader> create(const std::filesystem::path& vertexPath, const std::filesystem::path& fragmentPath);
+    static std::shared_ptr<Shader> create(const std::filesystem::path& vertexPath, const std::filesystem::path& fragmentPath, const std::filesystem::path& geometryPath);
+    static std::shared_ptr<Shader> create(const std::filesystem::path& dirPath);
 
-    static std::shared_ptr<Shader> createNative(const std::string& vertexPath, const std::string& fragmentPath);
-    static std::shared_ptr<Shader> createNative(const std::string& vertexPath, const std::string& fragmentPath, const std::string& geometryPath);
-    static std::shared_ptr<Shader> createNative(const std::string& dirPath);
+    static std::shared_ptr<Shader> createNative(const std::filesystem::path& vertexPath, const std::filesystem::path& fragmentPath);
+    static std::shared_ptr<Shader> createNative(const std::filesystem::path& vertexPath, const std::filesystem::path& fragmentPath, const std::filesystem::path& geometryPath);
+    static std::shared_ptr<Shader> createNative(const std::filesystem::path& dirPath);
     ~Shader();
 
     bool operator==(const Shader& rhs) const;

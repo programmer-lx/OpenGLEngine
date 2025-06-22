@@ -76,7 +76,7 @@ std::shared_ptr<Skybox> Skybox::create(const std::shared_ptr<TextureCube>& tex)
     std::shared_ptr<Skybox> ptr(new Skybox);
 
     ptr->m_TexCube = tex;
-    ptr->m_Shader = Shader::create(Application::shadersPath() + "/FlxShader/Skybox");
+    ptr->m_Shader = Shader::create(Application::shadersPath() / "FlxShader/Skybox");
 
     return ptr;
 }

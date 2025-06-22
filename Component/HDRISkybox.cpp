@@ -28,7 +28,7 @@ std::shared_ptr<HDRISkybox> HDRISkybox::create(const std::shared_ptr<Texture2D>&
     std::shared_ptr<HDRISkybox> ptr(new HDRISkybox);
 
     ptr->m_Tex2D = tex;
-    ptr->m_Shader = Shader::create(Application::shadersPath() + "/FlxShader/HDRISkybox");
+    ptr->m_Shader = Shader::create(Application::shadersPath() / "FlxShader/HDRISkybox");
 
     return ptr;
 }
