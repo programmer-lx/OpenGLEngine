@@ -117,7 +117,3 @@ OpenGL版本：4.3 Core
 - 天空盒：[链接](https://opengameart.org/content/ulukais-space-skyboxes)
 
 - 路灯模型：[链接](https://fab.com/s/2b74e7355905)
-
-## 关于开发者
-
-我是冯力行，来自佛山大学。本项目是我自己在课外进行的一次图形学实践。
